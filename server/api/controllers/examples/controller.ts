@@ -1,4 +1,4 @@
-import ExamplesService from '../../services/examples.service';
+import ExamplesService from '@/api/services/examples.service';
 import { Request, Response } from 'express';
 
 export class Controller {

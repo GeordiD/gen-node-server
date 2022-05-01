@@ -1,10 +1,10 @@
 import controller from './controller';
-import ExamplesService from '../../services/examples.service';
+import ExamplesService from '@/api/services/examples.service';
 import { getMockReq, getMockRes } from '@jest-mock/express';
 
 // This could probably be turned into a helper funciton
 // const _exampleService = mock('../../services/examples.service', ExamplesService);
-jest.mock('../../services/examples.service');
+jest.mock('@/api/services/examples.service');
 const mockedExamplesService = ExamplesService as jest.Mocked<
   typeof ExamplesService
 >;
