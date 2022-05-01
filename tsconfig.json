@@ -25,7 +25,8 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["server/*"]
+      "@/*": ["server/*"],
+      ""
     }
   },
   "include": ["server/**/*.ts"],
