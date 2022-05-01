@@ -42,6 +42,7 @@
     "supertest": "^6.1.6",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
+    "tsconfig-paths": "^3.14.1",
     "typescript": "^4.6.2"
   },
   "author": "Geordi Dosher <geordi.dosher@gmail.com> (https://github.com/gdosher)"
