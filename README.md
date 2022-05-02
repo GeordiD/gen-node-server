@@ -8,13 +8,13 @@ Get started developing...
 
 ```shell
 # install deps
-npm install
+pnpm install
 
 # run in development mode
-npm run dev
+pnpm run dev
 
 # run tests
-npm run test
+pnpm run test
 ```
 
 ---
