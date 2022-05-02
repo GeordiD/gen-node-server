@@ -1,5 +1,5 @@
 import controller from './examples.controller';
-import ExamplesService from '@/api/services/examples.service';
+import ExamplesService from '@/services/examples.service';
 import { getMockReq, getMockRes } from '@jest-mock/express';
 
 // This could probably be turned into a helper funciton
