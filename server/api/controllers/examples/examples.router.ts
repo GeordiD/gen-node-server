@@ -1,5 +1,5 @@
 import express from 'express';
-import controller from './controller';
+import controller from './examples.controller';
 export default express
   .Router()
   .post('/', controller.create)

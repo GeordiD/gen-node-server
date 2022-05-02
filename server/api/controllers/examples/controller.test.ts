@@ -1,4 +1,4 @@
-import controller from './controller';
+import controller from './examples.controller';
 import ExamplesService from '@/api/services/examples.service';
 import { getMockReq, getMockRes } from '@jest-mock/express';
 
