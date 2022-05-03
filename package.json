@@ -8,8 +8,6 @@
     "compile": "ts-node build.ts && tsc && tscpaths -p tsconfig.json -s ./server -o ./dist",
     "dev": "nodemon server/index.ts | pino-pretty",
     "dev:debug": "nodemon --exec \"node -r ts-node/register --inspect-brk\" server/index.ts | pino-pretty",
-    "docker:build": "docker-compose build",
-    "dockerize": "pnpm run compile && pnpm run docker:build",
     "lint": "eslint -c .eslintrc.js \"{server, test}/**/*.{js,ts,tsx}\" --quiet",
     "lint:fix": "eslint -c .eslintrc.js \"{server, test}/**/*.{js,ts,tsx}\" --quiet --fix",
     "test": "jest"
