@@ -21,10 +21,9 @@ export class ExamplesController {
   }
 
   create(req: Request, res: Response): void {
-    this.examplesService
-      .create(req.body.name)
-      .then((r) =>
-        res.status(201).location(`/api/v1/examples/${r.id}`).json(r)
-      );
+    this.examplesService.create(req.body.name).then((_) =>
+      // res.status(201).location(`/api/v1/examples/${r.id}`).json(r)
+      res.status(200).send()
+    );
   }
 }
