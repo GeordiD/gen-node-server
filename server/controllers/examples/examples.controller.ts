@@ -2,7 +2,7 @@ import { ExamplesService } from '@/services/examples.service';
 import { Request, Response } from 'express';
 
 export class ExamplesController {
-  private examplesService: ExamplesService;
+  examplesService: ExamplesService;
 
   constructor({ examplesService = new ExamplesService() } = {}) {
     this.examplesService = examplesService;
@@ -28,5 +28,3 @@ export class ExamplesController {
       );
   }
 }
-
-// export default new Controller();
