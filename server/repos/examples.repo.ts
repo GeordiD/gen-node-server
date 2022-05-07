@@ -1,9 +1,9 @@
-import dbClientConnection from '@/common/db-client';
+import { _dbClient } from '@/common/db-client';
 import { Example } from '@/models/example';
 
 export class ExamplesRepo {
   async getAll(): Promise<Example[]> {
-    const client = await dbClientConnection;
+    const client = await _dbClient.getClient();
     const cursor = await client
       .db()
       .collection('examples')
@@ -13,3 +13,5 @@ export class ExamplesRepo {
     return await cursor.toArray();
   }
 }
+
+export const _examplesRepo = new ExamplesRepo();

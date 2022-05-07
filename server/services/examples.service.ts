@@ -1,19 +1,13 @@
 import L from '@/common/logger';
 import { Example } from '@/models/example';
-import { ExamplesRepo } from '@/repos/examples.repo';
+import { _examplesRepo } from '@/repos/examples.repo';
 import { ObjectId } from 'mongodb';
 
 const examples: Example[] = [];
 
 export class ExamplesService {
-  private examplesRepo: ExamplesRepo;
-
-  constructor({ examplesRepo = new ExamplesRepo() } = {}) {
-    this.examplesRepo = examplesRepo;
-  }
-
   async all(): Promise<Example[]> {
-    const result = await this.examplesRepo.getAll();
+    const result = await _examplesRepo.getAll();
 
     L.info(result, 'fetch all examples');
 
@@ -35,3 +29,5 @@ export class ExamplesService {
     return Promise.resolve(example);
   }
 }
+
+export const _examplesService = new ExamplesService();
