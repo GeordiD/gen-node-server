@@ -8,12 +8,20 @@ import l from './logger';
 
 import errorHandler from '../middlewares/error.handler';
 import * as OpenApiValidator from 'express-openapi-validator';
+import { setupAuth } from './auth';
 
 const app = express();
 
 export default class ExpressServer {
   private routes: (app: Application) => void;
+
   constructor() {
+    this.setupParsing();
+    this.setupFrontendServer();
+    setupAuth();
+  }
+
+  private setupParsing() {
     const root = path.normalize(__dirname + '/../..');
     app.use(bodyParser.json({ limit: process.env.REQUEST_LIMIT || '100kb' }));
     app.use(
@@ -24,8 +32,15 @@ export default class ExpressServer {
     );
     app.use(bodyParser.text({ limit: process.env.REQUEST_LIMIT || '100kb' }));
     app.use(cookieParser(process.env.SESSION_SECRET));
-    app.use(express.static(`${root}/public`));
+  }
 
+  private setupFrontendServer() {
+    const root = path.normalize(__dirname + '/../..');
+    app.use(express.static(`${root}/public`));
+  }
+
+  // tbd
+  private setupSwagger() {
     const apiSpec = path.join(__dirname, 'api.yml');
     const validateResponses = !!(
       process.env.OPENAPI_ENABLE_RESPONSE_VALIDATION &&
