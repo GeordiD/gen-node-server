@@ -9,8 +9,6 @@ import l from './logger';
 import { _envConfig } from './envConfig';
 import { _usersRepo } from '@/repos/users.repo';
 import { _authenticationService } from '@/services/authentication.service';
-import e from 'express';
-// import { _userService } from '@/services/user.service';
 
 export const setupAuth = () => {
   const secret = _envConfig.getFromEnv('JWT_SECRET');
