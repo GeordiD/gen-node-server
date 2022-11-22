@@ -14,11 +14,9 @@ export class ExamplesController {
     });
   }
 
-  create(req: Request, res: Response): void {
-    _examplesService.create(req.body.name).then((_) =>
-      // res.status(201).location(`/api/v1/examples/${r.id}`).json(r)
-      res.status(200).send()
-    );
+  async create(_req: Request, res: Response) {
+    const result = await _examplesService.create(_req.body.name);
+    res.json(result);
   }
 }
 

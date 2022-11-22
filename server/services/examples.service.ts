@@ -1,32 +1,22 @@
-import L from '@/common/logger';
-import { Example } from '@/models/example';
-import { _examplesRepo } from '@/repos/examples.repo';
-import { ObjectId } from 'mongodb';
-
-const examples: Example[] = [];
+import { prisma } from '@/common/db';
+import { Example } from '@prisma/client';
 
 export class ExamplesService {
   async all(): Promise<Example[]> {
-    const result = await _examplesRepo.getAll();
-
-    L.info(result, 'fetch all examples');
-
+    const result = await prisma.example.findMany();
     return result;
   }
 
   byId(id: number): Promise<Example> {
-    L.info(`fetch example with id ${id}`);
     return this.all().then((r) => r[id]);
   }
 
-  create(name: string): Promise<Example> {
-    L.info(`create example with name ${name}`);
-    const example: Example = {
-      _id: new ObjectId(),
-      name,
-    };
-    examples.push(example);
-    return Promise.resolve(example);
+  async create(name: string): Promise<Example> {
+    return await prisma.example.create({
+      data: {
+        name,
+      },
+    });
   }
 }
 

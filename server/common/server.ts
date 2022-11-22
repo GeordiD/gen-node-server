@@ -22,7 +22,6 @@ export default class ExpressServer {
   }
 
   private setupParsing() {
-    const root = path.normalize(__dirname + '/../..');
     app.use(bodyParser.json({ limit: process.env.REQUEST_LIMIT || '100kb' }));
     app.use(
       bodyParser.urlencoded({
