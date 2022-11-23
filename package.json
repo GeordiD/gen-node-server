@@ -55,5 +55,8 @@
     "tsconfig-paths": "^3.14.1",
     "typescript": "^4.6.2"
   },
-  "author": "Geordi Dosher <geordi.dosher@gmail.com> (https://github.com/gdosher)"
+  "author": "Geordi Dosher <geordi.dosher@gmail.com> (https://github.com/gdosher)",
+  "prisma": {
+    "schema": "server/db/schema.prisma"
+  }
 }

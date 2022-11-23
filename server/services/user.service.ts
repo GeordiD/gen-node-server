@@ -1,4 +1,4 @@
-import { db } from '@/common/db';
+import { db } from '@/db/db';
 import { User as DbUser } from '@prisma/client';
 import { _authenticationService } from './authentication.service';
 

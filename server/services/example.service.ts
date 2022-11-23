@@ -1,4 +1,4 @@
-import { db } from '@/common/db';
+import { db } from '@/db/db';
 import { Example } from '@prisma/client';
 
 export class ExamplesService {
