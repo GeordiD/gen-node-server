@@ -1,6 +1,6 @@
 {
   "name": "gen-node-server",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A scaffolded node server meant to be a starting point for new projects",
   "main": "dist/index.js",
   "scripts": {
