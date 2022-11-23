@@ -1,4 +1,4 @@
-import { _examplesService } from '@/services/examples.service';
+import { _examplesService } from '@/services/example.service';
 import { getMockReq, getMockRes } from '@jest-mock/express';
 import { _examplesController } from './examples.controller';
 

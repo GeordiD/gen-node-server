@@ -1,9 +1,9 @@
-import { prisma } from '@/common/db';
+import { db } from '@/common/db';
 import { Example } from '@prisma/client';
 
 export class ExamplesService {
   async all(): Promise<Example[]> {
-    const result = await prisma.example.findMany();
+    const result = await db.example.findMany();
     return result;
   }
 
@@ -12,7 +12,7 @@ export class ExamplesService {
   }
 
   async create(name: string): Promise<Example> {
-    return await prisma.example.create({
+    return await db.example.create({
       data: {
         name,
       },

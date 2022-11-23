@@ -1,5 +1,5 @@
-import { User } from '@/models/user';
 import { _jwtService } from '@/services/jwt.service';
+import { User } from '@/services/user.service';
 import { Request, Response, NextFunction } from 'express';
 
 export interface LoginRequest extends Request {
@@ -12,7 +12,7 @@ export class AccountController {
       const user = _req['user'] as User;
 
       const payload = {
-        user: user.buildJwtUser(),
+        user: this.buildJwtUser(user),
       };
 
       const token = _jwtService.signJwt(payload);
@@ -33,7 +33,7 @@ export class AccountController {
       const user = _req['user'] as User;
 
       const payload = {
-        user: user.buildJwtUser(),
+        user: this.buildJwtUser(user),
       };
 
       const token = _jwtService.signJwt(payload);
@@ -45,6 +45,14 @@ export class AccountController {
     } catch (err) {
       _next(err);
     }
+  }
+
+  private buildJwtUser(user: User) {
+    return {
+      id: user.id,
+      email: user.email,
+      isAdmin: false,
+    };
   }
 }
 
