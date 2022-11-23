@@ -8,7 +8,7 @@ export class AuthenticationService {
 
   async checkPassword(
     testPassword: string,
-    currentPassword: string | null
+    currentPassword: string | null | undefined
   ): Promise<boolean> {
     if (!currentPassword) return false;
     return await bcrypt.compare(testPassword, currentPassword);

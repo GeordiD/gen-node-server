@@ -7,8 +7,8 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import passport from 'passport';
 import l from './logger';
 import { _envConfig } from './envConfig';
-import { _usersRepo } from '@/repos/users.repo';
 import { _authenticationService } from '@/services/authentication.service';
+import { _userService } from '@/services/user.service';
 
 export const setupAuth = () => {
   const secret = _envConfig.getFromEnv('JWT_SECRET');
@@ -44,7 +44,7 @@ export const setupAuth = () => {
         secretOrKey: secret,
       },
       async (token, done) => {
-        const user = await _usersRepo.getUserByEmail(token.user.email);
+        const user = await _userService.getUserByEmail(token.user.email);
         if (user) {
           return done(null, user);
         } else {
@@ -59,10 +59,10 @@ export const setupAuth = () => {
     'login',
     new LocalStrategy(async (username, password, cb) => {
       try {
-        const user = await _usersRepo.getUserByEmail(username);
+        const user = await _userService.getUserByEmail(username);
 
         if (user !== null) {
-          const storedPasswordHash = await _usersRepo.getPasswordHashById(
+          const storedPasswordHash = await _userService.getPasswordHash(
             user.id
           );
 
